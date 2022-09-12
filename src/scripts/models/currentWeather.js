@@ -6,7 +6,15 @@ export default class CurrentWeather {
     this.humidity = currentWeatherData.main.humidity;
     this.windSpeed = currentWeatherData.wind.speed;
     this.pressure = currentWeatherData.main.pressure;
-    this.sunrise = currentWeatherData.sys.sunrise;
-    this.sunset = currentWeatherData.sys.sunset;
+    this.sunrise = this.convertToTime(currentWeatherData.sys.sunrise);
+    this.sunset = this.convertToTime(currentWeatherData.sys.sunset);
+  }
+
+  convertToTime(rawData) {
+    const date = new Date(rawData * 1000);
+    const hours = date.getHours();
+    const minutes = `0${date.getMinutes()}`;
+    const formattedTime = `${hours}:${minutes.substr(-2)}`;
+    return formattedTime;
   }
 }
