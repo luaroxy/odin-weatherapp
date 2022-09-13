@@ -1,11 +1,12 @@
 export default class CurrentWeather {
   constructor(currentWeatherData) {
     this.temperature = Math.round(currentWeatherData.main.temp);
-    this.weatherCondition = currentWeatherData.weather[0].description;
+    this.weatherConditionDesc = currentWeatherData.weather[0].description;
+    this.weatherConditionImg = currentWeatherData.weather[0].main;
     this.feelsLikeTemp = Math.round(currentWeatherData.main.feels_like);
-    this.humidity = currentWeatherData.main.humidity;
-    this.windSpeed = currentWeatherData.wind.speed;
-    this.pressure = currentWeatherData.main.pressure;
+    this.humidity = `${currentWeatherData.main.humidity}%`;
+    this.windSpeed = `${currentWeatherData.wind.speed} m/s`;
+    this.pressure = `${currentWeatherData.main.pressure} hPa`;
     this.sunrise = this.convertToTime(currentWeatherData.sys.sunrise);
     this.sunset = this.convertToTime(currentWeatherData.sys.sunset);
   }
