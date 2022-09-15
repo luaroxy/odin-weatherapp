@@ -17,16 +17,14 @@ export default class APIs {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e52320b984040185e6040a1e67f254e0&units=${unit}`;
     const response = await fetch(url, { mode: "cors" });
     const weatherData = await response.json();
-    console.log(weatherData);
     return weatherData;
   }
 
-  async getForecast(city, unit) {
+  async getForecastWeatherData(city, unit) {
     const { lat, lon } = await this.getGeoCoordinates(city);
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=8&appid=e52320b984040185e6040a1e67f254e0&units=${unit}`;
     const response = await fetch(url, { mode: "cors" });
     const forecastData = await response.json();
-    console.log(forecastData);
     return forecastData;
   }
 }

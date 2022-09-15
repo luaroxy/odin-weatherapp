@@ -7,6 +7,7 @@ export default class MainController {
   }
 
   async callFunc() {
-    await this.model.getCurrentWeather("London", "metric");
+    await this.model.getCurrentWeather("Regina", "metric");
+    await this.model.getForecastWeather("Regina", "metric");
   }
 }
