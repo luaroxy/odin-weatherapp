@@ -5,7 +5,6 @@ export default class ForecastWeather {
     this.time = this.getTimes(forecastWeatherData);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getTemperatures(forecastWeatherData) {
     const temperatures = [];
     forecastWeatherData.list.forEach((item) => {
@@ -15,7 +14,6 @@ export default class ForecastWeather {
     return temperatures;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getWeatherConditions(forecastWeatherData) {
     const weatherCondition = [];
     forecastWeatherData.list.forEach((item) => {
@@ -25,7 +23,6 @@ export default class ForecastWeather {
     return weatherCondition;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getTimes(forecastWeatherData) {
     const times = [];
     const { timezone } = forecastWeatherData.city;
@@ -36,7 +33,6 @@ export default class ForecastWeather {
     return times;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   convertToSearchedCityTime(unixTime, timezone) {
     const localDate = new Date(unixTime.dt * 1000);
     const utcUnixTime = localDate.getTime() + localDate.getTimezoneOffset() * 60000;
