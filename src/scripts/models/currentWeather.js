@@ -7,14 +7,17 @@ export default class CurrentWeather {
     this.humidity = `${currentWeatherData.main.humidity}%`;
     this.windSpeed = `${currentWeatherData.wind.speed} m/s`;
     this.pressure = `${currentWeatherData.main.pressure} hPa`;
-    this.sunrise = this.convertToTime(currentWeatherData.sys.sunrise);
-    this.sunset = this.convertToTime(currentWeatherData.sys.sunset);
+    this.sunrise = this.convertToSearchedCityTime(currentWeatherData.sys.sunrise, currentWeatherData.timezone);
+    this.sunset = this.convertToSearchedCityTime(currentWeatherData.sys.sunset, currentWeatherData.timezone);
   }
 
-  convertToTime(rawData) {
-    const date = new Date(rawData * 1000);
-    const hours = date.getHours();
-    const minutes = `0${date.getMinutes()}`;
+  convertToSearchedCityTime(unixTime, timezone) {
+    const localDate = new Date(unixTime * 1000);
+    const utcUnixTime = localDate.getTime() + localDate.getTimezoneOffset() * 60000;
+    const unixTimeInSearchedCity = utcUnixTime + timezone * 1000;
+    const dateInSearchedCity = new Date(unixTimeInSearchedCity);
+    const hours = dateInSearchedCity.getHours();
+    const minutes = `0${dateInSearchedCity.getMinutes()}`;
     const formattedTime = `${hours}:${minutes.substr(-2)}`;
     return formattedTime;
   }
