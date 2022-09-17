@@ -1,5 +1,20 @@
 @import url(./normalize.css);
 
+:root {
+  --red: hsl(0, 100%, 74%);
+  --green: hsl(154, 59%, 51%);
+  --blue: hsl(248, 32%, 49%);
+  --darkBlue: hsl(249, 10%, 26%);
+  --greyishBlue: hsl(246, 25%, 77%);
+  --clr-neutral: hsl(0, 0%, 100%);
+  --ff-primary: "Poppins", sans-serif;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+}
+
 *,
 *::before,
 *::after {
@@ -12,11 +27,15 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: rgb(212, 207, 207);
+  font-family: var(--ff-primary);
+  color: var(--clr-neutral);
 }
 
 main {
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
   padding: 2rem;
 }
 
@@ -27,13 +46,25 @@ main {
 }
 
 .search-wrapper input {
+  width: 40%;
+  padding: 10px 10px 10px 40px;
+  border-radius: 2rem;
+  border: none;
   background-image: url(../images/magnify.png);
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: calc(1rem + 0.5vw);
-  width: 40%;
-  border-radius: 2rem;
-  border: none;
   background-color: white;
-  padding: 10px 10px 10px 40px;
+}
+
+.city-info h1 {
+  margin: 0.3rem 0;
+  letter-spacing: 0.1rem;
+  font-weight: var(--fw-600);
+  font-size: 2.5rem;
+}
+
+.city-info h2 {
+  font-size: 1.1rem;
+  font-weight: var(--fw-300);
 }
