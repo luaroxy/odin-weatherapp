@@ -1,1 +1,39 @@
 @import url(./normalize.css);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(212, 207, 207);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper input {
+  background-image: url(../images/magnify.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: calc(1rem + 0.5vw);
+  width: 40%;
+  border-radius: 2rem;
+  border: none;
+  background-color: white;
+  padding: 10px 10px 10px 40px;
+}
