@@ -45,6 +45,6 @@ class UrlGenerator {
   }
 
   generateForecastWeatherUrl(lat, lon, unit) {
-    return `${this.baseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.appId}&units=${unit}`;
+    return `${this.baseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=8&appid=${this.appId}&units=${unit}`;
   }
 }

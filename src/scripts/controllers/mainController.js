@@ -7,8 +7,12 @@ export default class MainController {
   }
 
   async callFunc() {
-    await this.model.getCityInfo("Regina", "metric");
-    await this.model.getCurrentWeather("Regina", "metric");
-    await this.model.getForecastWeather("Regina", "metric");
+    const cityInfo = await this.model.getCityInfo("Regina", "metric");
+    const currentWeather = await this.model.getCurrentWeather("Regina", "metric");
+    const forecastWeather = await this.model.getForecastWeather("Regina", "metric");
+
+    this.view.appendCityInfo(cityInfo);
+    this.view.appendCurrentWeather(currentWeather);
+    this.view.appendForecastWeather(forecastWeather);
   }
 }

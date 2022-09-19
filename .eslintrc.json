@@ -12,6 +12,7 @@
   "ignorePatterns": ["dist/", "node_modules/"],
   "rules": {
     "max-classes-per-file": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "no-new": "off"
   }
 }

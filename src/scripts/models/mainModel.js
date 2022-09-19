@@ -12,18 +12,18 @@ export default class MainModel {
   async getCityInfo(city, unit) {
     const ApiData = await this.APIs.getCurrentWeatherData(city, unit);
     const cityInfo = new CityInfo(ApiData);
-    console.log(cityInfo);
+    return cityInfo;
   }
 
   async getCurrentWeather(city, unit) {
     const currentWeatherData = await this.APIs.getCurrentWeatherData(city, unit);
-    const currentWeather = new CurrentWeather(currentWeatherData);
-    console.log(currentWeather);
+    const currentWeather = new CurrentWeather(currentWeatherData, unit);
+    return currentWeather;
   }
 
   async getForecastWeather(city, unit) {
     const forecastWeatherData = await this.APIs.getForecastWeatherData(city, unit);
-    const forecastWeather = new ForecastWeather(forecastWeatherData);
-    console.log(forecastWeather);
+    const forecastWeather = new ForecastWeather(forecastWeatherData, unit);
+    return forecastWeather;
   }
 }
