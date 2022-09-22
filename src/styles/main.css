@@ -17,6 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-shadow: 2px 2px 8px #000000;
 }
 
 body {
@@ -31,9 +32,26 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -5;
+}
+
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .search-wrapper {
@@ -52,6 +70,7 @@ main {
   background-position: 10px center;
   background-size: calc(1rem + 0.5vw);
   background-color: white;
+  text-shadow: none;
 }
 
 .city-info h1 {

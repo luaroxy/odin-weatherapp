@@ -9,6 +9,8 @@ export default class MainController {
   }
 
   async callFunc(city) {
+    document.getElementById("video").playbackRate = 0.5;
+
     const cityInfo = await this.model.getCityInfo(city, "metric");
     const currentWeather = await this.model.getCurrentWeather(city, "metric");
     const forecastWeather = await this.model.getForecastWeather(city, "metric");
@@ -16,6 +18,8 @@ export default class MainController {
     this.view.appendCityInfo(cityInfo);
     this.view.appendCurrentWeather(currentWeather);
     this.view.appendForecastWeather(forecastWeather);
+
+    await this.getImg();
   }
 
   checkIfEnter(e) {

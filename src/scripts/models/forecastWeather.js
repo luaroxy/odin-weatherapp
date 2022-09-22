@@ -20,19 +20,19 @@ export default class ForecastWeather {
   }
 
   convertToSearchedCityDate(unixTime, timezone) {
-    const localDate = unixTime === 0 ? new Date() : new Date(unixTime * 1000);
+    const localDate = new Date(unixTime * 1000);
     const utcUnixTime = localDate.getTime() + localDate.getTimezoneOffset() * 60000;
     const unixTimeInSearchedCity = utcUnixTime + timezone * 1000;
     const dateInSearchedCity = new Date(unixTimeInSearchedCity);
     return dateInSearchedCity;
   }
 
-  getWeatherConditionImg(value, sunriseUnix, sunsetUnix, timezone) {
+  getWeatherConditionImg(value, time, sunriseUnix, sunsetUnix, timezone) {
     if (value !== "Clear") return value;
-    const currentDate = this.convertToSearchedCityDate(0, timezone);
-    const sunriseDate = this.convertToSearchedCityDate(sunriseUnix, timezone);
-    const sunsetDate = this.convertToSearchedCityDate(sunsetUnix, timezone);
-    return currentDate > sunriseDate && currentDate < sunsetDate ? `${value}Day` : `${value}Night`;
+    const currentHour = this.convertToSearchedCityDate(time, timezone).getHours();
+    const sunriseHour = this.convertToSearchedCityDate(sunriseUnix, timezone).getHours();
+    const sunsetHour = this.convertToSearchedCityDate(sunsetUnix, timezone).getHours();
+    return currentHour > sunriseHour && currentHour < sunsetHour ? `${value}Day` : `${value}Night`;
   }
 
   getWeatherConditions(forecastWeatherData) {
@@ -41,7 +41,7 @@ export default class ForecastWeather {
     const sunsetUnix = forecastWeatherData.city.sunset;
     const { timezone } = forecastWeatherData.city;
     forecastWeatherData.list.forEach((item) => {
-      const cond = this.getWeatherConditionImg(item.weather[0].main, sunriseUnix, sunsetUnix, timezone);
+      const cond = this.getWeatherConditionImg(item.weather[0].main, item.dt, sunriseUnix, sunsetUnix, timezone);
       weatherCondition.push(cond);
     });
     return weatherCondition;

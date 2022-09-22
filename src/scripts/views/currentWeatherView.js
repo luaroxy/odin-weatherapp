@@ -13,6 +13,7 @@ export default class CurrentWeatherView {
     this.pressure = currentWeatherModel.pressure;
     this.nowWeatherCondition = currentWeatherModel.weatherConditionImg;
     this.nowTemperature = currentWeatherModel.temperature;
+    this.backgroundVideo = currentWeatherModel.backgroundVideo;
   }
 
   get weatherConditionImg() {
@@ -101,5 +102,13 @@ export default class CurrentWeatherView {
 
   set nowTemperature(value) {
     this.nowTemperature.textContent = value;
+  }
+
+  get backgroundVideo() {
+    return document.getElementById("video");
+  }
+
+  set backgroundVideo(value) {
+    this.backgroundVideo.src = value;
   }
 }
