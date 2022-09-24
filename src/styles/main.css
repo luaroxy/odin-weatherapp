@@ -117,7 +117,9 @@ video {
 .search-wrapper {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-wrapper input {
@@ -131,6 +133,10 @@ video {
   background-size: calc(1rem + 0.5vw);
   background-color: white;
   text-shadow: none;
+}
+
+#error {
+  display: none;
 }
 
 .city-info h1 {

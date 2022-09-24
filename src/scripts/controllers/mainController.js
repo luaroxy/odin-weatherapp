@@ -5,13 +5,13 @@ export default class MainController {
     this.city = {};
     this.unit = "metric";
 
-    document.getElementById("search").addEventListener("blur", (e) => this.callFunc(document.getElementById("search").value));
+    document.getElementById("search").addEventListener("blur", (e) => this.loadPage(document.getElementById("search").value));
     document.getElementById("search").addEventListener("keypress", (e) => this.checkIfEnter(e));
-    window.addEventListener("load", () => this.callFunc("new york"));
+    window.addEventListener("load", () => this.loadPage("new york"));
     document.getElementById("checkbox-unit").addEventListener("change", (e) => this.changeTemperature(e));
   }
 
-  async callFunc(city) {
+  async loadPage(city) {
     document.getElementById("video").playbackRate = 0.5;
 
     this.city = city;
