@@ -34,7 +34,7 @@ main {
   justify-content: space-evenly;
   position: relative;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   padding: 4rem 2rem;
   overflow: hidden;
 }
