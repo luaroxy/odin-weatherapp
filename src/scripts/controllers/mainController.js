@@ -33,6 +33,6 @@ export default class MainController {
     const unit = e.currentTarget.checked ? "imperial" : "metric";
     this.view.changeUnitTemp(unit);
     this.unit = unit;
-    this.callFunc(this.city);
+    this.loadPage(this.city);
   }
 }
